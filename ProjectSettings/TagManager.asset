@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - Coletavel
+  - Relogio
+  - Inimigo
+  - Parede
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - OneWay
+  - Player
+  - Enemy
+  - Pickup
+  - Reflection
+  - Corpse
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 1324484885
+    locked: 0
+  - name: Far
+    uniqueID: 696030341
+    locked: 0
+  - name: Mid
+    uniqueID: 339800072
+    locked: 0
+  - name: Buildings
+    uniqueID: 1660445297
+    locked: 0
+  - name: Ground
+    uniqueID: 2024493761
+    locked: 0
+  - name: Props
+    uniqueID: 1316331468
+    locked: 0
+  - name: Characters
+    uniqueID: 751597202
+    locked: 0
+  - name: Foreground
+    uniqueID: 812909395
+    locked: 0
+  - name: Reflection
+    uniqueID: 172390455
+    locked: 0
+  - name: FX
+    uniqueID: 1910301108
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

@@ -1,0 +1,8 @@
+{
+    "name": "BrandedToKill",
+    "references": [
+        "Unity.InputSystem",
+        "UnityEngine.UI"
+    ],
+    "autoReferenced": true
+}

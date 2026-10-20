@@ -5,7 +5,7 @@
 Jogo 2D visto de cima feito em **Unity 6** para o *Projeto Introdução ao Unity* (Insper, Jogos Digitais 2026), a partir do tutorial "Introdução Rápida".
 
 - **Autor:** Vinicius Montes Dib
-- **Jogar no navegador (itch.io):** _link do itch.io aqui_
+- **Jogar no navegador (itch.io):** [_link do itch.io aqui_](https://viniciusdib.itch.io/branded-to-kill)
 
 ## Como jogar
 

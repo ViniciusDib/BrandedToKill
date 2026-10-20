@@ -35,8 +35,8 @@ public static class GameBuilder
         CreateTags("Coletavel", "Relogio", "Inimigo", "Parede");
         PlayerSettings.productName = "Branded to Kill";
         PlayerSettings.companyName = "Insper";
-        PlayerSettings.defaultWebScreenWidth = 1280;
-        PlayerSettings.defaultWebScreenHeight = 720;
+        PlayerSettings.defaultWebScreenWidth = 600;  // resolução pedida na entrega
+        PlayerSettings.defaultWebScreenHeight = 480;
         PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
         PlayerSettings.WebGL.decompressionFallback = true; // necessário para funcionar no itch.io
         AssetDatabase.Refresh();
@@ -135,7 +135,7 @@ public static class GameBuilder
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         Random.InitState(7); // janelas sempre iguais
-        Camera(new Vector3(0f, 0.5f), 9.5f);
+        Camera(new Vector3(0f, 0.5f), 32.5f, 19.5f);
         GlobalLight();
 
         // Chão da rua e marcações
@@ -194,10 +194,10 @@ public static class GameBuilder
         // HUD
         var canvas = Canvas();
         var hud = canvas.gameObject.AddComponent<HUD>();
-        hud.scoreText = Label(canvas.transform, "PONTOS 0", 36, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(30, -12), new Vector2(500, 50));
-        hud.coinsText = Label(canvas.transform, "MOEDAS 0 / 12", 36, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(330, -12), new Vector2(500, 50));
-        hud.timeText = Label(canvas.transform, "01:30", 48, Color.white, TextAnchor.UpperCenter, new Vector2(0.5f, 1), new Vector2(0, -6), new Vector2(300, 60));
-        hud.livesText = Label(canvas.transform, "VIDAS 3", 36, Pink, TextAnchor.UpperRight, new Vector2(1, 1), new Vector2(-30, -12), new Vector2(300, 50));
+        hud.scoreText = Label(canvas.transform, "PONTOS 0", 28, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(20, -10), new Vector2(320, 36));
+        hud.coinsText = Label(canvas.transform, "MOEDAS 0 / 12", 28, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(20, -44), new Vector2(320, 36));
+        hud.timeText = Label(canvas.transform, "01:30", 48, Color.white, TextAnchor.UpperCenter, new Vector2(0.5f, 1), new Vector2(0, -8), new Vector2(240, 56));
+        hud.livesText = Label(canvas.transform, "VIDAS 3", 28, Pink, TextAnchor.UpperRight, new Vector2(1, 1), new Vector2(-20, -10), new Vector2(240, 36));
         EventSystem();
 
         EditorSceneManager.SaveScene(scene, Scenes + "Game.unity");
@@ -237,7 +237,7 @@ public static class GameBuilder
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         Random.InitState(11);
-        Camera(new Vector3(0f, 0.5f), 9.5f);
+        Camera(new Vector3(0f, 0.5f), 23f, 19f);
         GlobalLight();
 
         // Sala do cofre: menor, toda em dourado
@@ -275,11 +275,11 @@ public static class GameBuilder
 
         var canvas = Canvas();
         var hud = canvas.gameObject.AddComponent<HUD>();
-        hud.scoreText = Label(canvas.transform, "PONTOS 0", 36, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(30, -12), new Vector2(500, 50));
-        hud.coinsText = Label(canvas.transform, "MOEDAS 0 / 8", 36, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(330, -12), new Vector2(500, 50));
-        hud.timeText = Label(canvas.transform, "01:30", 48, Color.white, TextAnchor.UpperCenter, new Vector2(0.5f, 1), new Vector2(0, -6), new Vector2(300, 60));
-        hud.livesText = Label(canvas.transform, "VIDAS 3", 36, Pink, TextAnchor.UpperRight, new Vector2(1, 1), new Vector2(-30, -12), new Vector2(300, 50));
-        Label(canvas.transform, "FASE SECRETA  ·  O COFRE DA YAKUZA", 34, Yellow, TextAnchor.MiddleCenter, new Vector2(0.5f, 0), new Vector2(0, 22), new Vector2(1200, 50));
+        hud.scoreText = Label(canvas.transform, "PONTOS 0", 28, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(20, -10), new Vector2(320, 36));
+        hud.coinsText = Label(canvas.transform, "MOEDAS 0 / 8", 28, Yellow, TextAnchor.UpperLeft, new Vector2(0, 1), new Vector2(20, -44), new Vector2(320, 36));
+        hud.timeText = Label(canvas.transform, "01:30", 48, Color.white, TextAnchor.UpperCenter, new Vector2(0.5f, 1), new Vector2(0, -8), new Vector2(240, 56));
+        hud.livesText = Label(canvas.transform, "VIDAS 3", 28, Pink, TextAnchor.UpperRight, new Vector2(1, 1), new Vector2(-20, -10), new Vector2(240, 36));
+        Label(canvas.transform, "FASE SECRETA  ·  O COFRE DA YAKUZA", 26, Yellow, TextAnchor.MiddleCenter, new Vector2(0.5f, 0), new Vector2(0, 22), new Vector2(900, 40));
         EventSystem();
         EditorSceneManager.SaveScene(scene, Scenes + "FaseSecreta.unity");
     }
@@ -288,7 +288,7 @@ public static class GameBuilder
     static void BuildMenuScene()
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-        Camera(Vector3.zero, 5f);
+        Camera(Vector3.zero, 12f, 10f);
         GlobalLight();
         // Fundo: silhueta de prédios com neon
         for (int i = 0; i < 9; i++)
@@ -307,17 +307,17 @@ public static class GameBuilder
         var menu = canvas.gameObject.AddComponent<MainMenu>();
         var main = Panel(canvas.transform, "MainPanel");
         menu.mainPanel = main;
-        var title = Label(main.transform, "BRANDED TO KILL", 120, Pink, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -170), new Vector2(1600, 150));
+        var title = Label(main.transform, "BRANDED TO KILL", 92, Pink, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -130), new Vector2(960, 120));
         title.gameObject.AddComponent<Outline>().effectColor = new Color(0.16f, 0.96f, 1f, 0.6f);
-        Label(main.transform, "Tóquio, 2h da manhã. Pegue o ouro da yakuza antes do tempo acabar.", 36, Cyan, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -300), new Vector2(1600, 50));
-        menu.playButton = Button(main.transform, "JOGAR", new Vector2(0, -20), Cyan);
-        menu.howToButton = Button(main.transform, "COMO JOGAR", new Vector2(0, -130), Yellow);
-        menu.quitButton = Button(main.transform, "SAIR", new Vector2(0, -240), Pink);
-        Label(main.transform, StudentName + "  ·  Insper 2026", 28, new Color(0.7f, 0.7f, 0.85f), TextAnchor.MiddleCenter, new Vector2(0.5f, 0), new Vector2(0, 40), new Vector2(1200, 40));
+        Label(main.transform, "Tóquio, 2h da manhã. Pegue o ouro da yakuza antes do tempo acabar.", 26, Cyan, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -215), new Vector2(900, 70));
+        menu.playButton = Button(main.transform, "JOGAR", new Vector2(0, -10), Cyan);
+        menu.howToButton = Button(main.transform, "COMO JOGAR", new Vector2(0, -95), Yellow);
+        menu.quitButton = Button(main.transform, "SAIR", new Vector2(0, -180), Pink);
+        Label(main.transform, StudentName + "  ·  Insper 2026", 22, new Color(0.7f, 0.7f, 0.85f), TextAnchor.MiddleCenter, new Vector2(0.5f, 0), new Vector2(0, 30), new Vector2(900, 30));
 
         var how = Panel(canvas.transform, "HowToPanel");
         menu.howToPanel = how;
-        Label(how.transform, "COMO JOGAR", 80, Yellow, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -130), new Vector2(1200, 100));
+        Label(how.transform, "COMO JOGAR", 60, Yellow, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -70), new Vector2(900, 80));
         Label(how.transform,
             "Pegue as 12 moedas de ouro antes do tempo acabar.\n" +
             "Encostar num capanga tira 1 vida. Você tem 3 vidas.\n" +
@@ -325,8 +325,8 @@ public static class GameBuilder
             "Dizem que um bueiro de Kabukichō leva ao cofre secreto da yakuza...\n\n" +
             "TECLADO: WASD ou setas para andar · ESPAÇO ou clique para atirar\n" +
             "CONTROLE XBOX: analógico esquerdo para andar · A ou RT para atirar",
-            34, Color.white, TextAnchor.MiddleCenter, new Vector2(0.5f, 0.5f), new Vector2(0, 40), new Vector2(1700, 400));
-        menu.backButton = Button(how.transform, "VOLTAR", new Vector2(0, -330), Cyan);
+            25, Color.white, TextAnchor.MiddleCenter, new Vector2(0.5f, 0.5f), new Vector2(0, 30), new Vector2(920, 470));
+        menu.backButton = Button(how.transform, "VOLTAR", new Vector2(0, -320), Cyan);
         EventSystem();
         EditorSceneManager.SaveScene(scene, Scenes + "MainMenu.unity");
     }
@@ -335,7 +335,7 @@ public static class GameBuilder
     static void BuildEndScene()
     {
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-        Camera(Vector3.zero, 5f);
+        Camera(Vector3.zero, 12f, 10f);
         GlobalLight();
         var holder = new GameObject("Som");
         var audio = holder.AddComponent<AudioSource>();
@@ -346,11 +346,11 @@ public static class GameBuilder
         end.audioSource = audio;
         end.victorySound = Clip("sfx_victory");
         end.gameOverSound = Clip("sfx_game_over");
-        end.titleText = Label(canvas.transform, "FIM DE JOGO", 120, Pink, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -180), new Vector2(1600, 150));
-        end.messageText = Label(canvas.transform, "", 40, Cyan, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -290), new Vector2(1600, 60));
-        end.statsText = Label(canvas.transform, "", 44, Color.white, TextAnchor.MiddleCenter, new Vector2(0.5f, 0.5f), new Vector2(0, 0), new Vector2(1200, 260));
-        end.playAgainButton = Button(canvas.transform, "JOGAR DE NOVO", new Vector2(-260, -300), Cyan);
-        end.menuButton = Button(canvas.transform, "MENU", new Vector2(260, -300), Pink);
+        end.titleText = Label(canvas.transform, "FIM DE JOGO", 88, Pink, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -130), new Vector2(960, 110));
+        end.messageText = Label(canvas.transform, "", 30, Cyan, TextAnchor.MiddleCenter, new Vector2(0.5f, 1), new Vector2(0, -235), new Vector2(900, 80));
+        end.statsText = Label(canvas.transform, "", 32, Color.white, TextAnchor.MiddleCenter, new Vector2(0.5f, 0.5f), new Vector2(0, -20), new Vector2(800, 200));
+        end.playAgainButton = Button(canvas.transform, "JOGAR DE NOVO", new Vector2(-200, -290), Cyan);
+        end.menuButton = Button(canvas.transform, "MENU", new Vector2(200, -290), Pink);
         EventSystem();
         EditorSceneManager.SaveScene(scene, Scenes + "EndGame.unity");
     }
@@ -409,13 +409,17 @@ public static class GameBuilder
         return go;
     }
 
-    static void Camera(Vector3 position, float size)
+    static void Camera(Vector3 position, float width, float height)
     {
         var go = new GameObject("Main Camera") { tag = "MainCamera" };
         go.transform.position = new Vector3(position.x, position.y, -10f);
         var cam = go.AddComponent<UnityEngine.Camera>();
         cam.orthographic = true;
-        cam.orthographicSize = size;
+        var fit = go.AddComponent<CameraFit>(); // a área inteira cabe em qualquer resolução
+        fit.width = width;
+        fit.height = height;
+        cam.aspect = 600f / 480f;
+        fit.Fit();
         cam.clearFlags = CameraClearFlags.SolidColor;
         cam.backgroundColor = Background;
         go.AddComponent<AudioListener>();
@@ -445,7 +449,7 @@ public static class GameBuilder
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         var scaler = go.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        scaler.referenceResolution = new Vector2(1920, 1080);
+        scaler.referenceResolution = new Vector2(1000, 800);
         scaler.matchWidthOrHeight = 0.5f;
         go.AddComponent<GraphicRaycaster>();
         return canvas;
@@ -484,7 +488,7 @@ public static class GameBuilder
         t.fontSize = size;
         t.color = color;
         t.alignment = align;
-        t.horizontalOverflow = HorizontalWrapMode.Overflow;
+        t.horizontalOverflow = HorizontalWrapMode.Wrap; // quebra linha se não couber
         t.verticalOverflow = VerticalWrapMode.Overflow;
         t.raycastTarget = false;
         return t;
@@ -496,7 +500,7 @@ public static class GameBuilder
         go.transform.SetParent(parent, false);
         var rt = (RectTransform)go.transform;
         rt.anchoredPosition = position;
-        rt.sizeDelta = new Vector2(440, 86);
+        rt.sizeDelta = new Vector2(360, 64);
         var image = go.AddComponent<Image>();
         image.sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
         image.type = Image.Type.Sliced;
@@ -507,7 +511,7 @@ public static class GameBuilder
         colors.selectedColor = color;
         colors.pressedColor = Color.white;
         button.colors = colors;
-        Label(go.transform, text, 40, Color.white, TextAnchor.MiddleCenter, new Vector2(0.5f, 0.5f), Vector2.zero, rt.sizeDelta);
+        Label(go.transform, text, 30, Color.white, TextAnchor.MiddleCenter, new Vector2(0.5f, 0.5f), Vector2.zero, rt.sizeDelta);
         return button;
     }
 
@@ -544,12 +548,14 @@ public static class GameBuilder
             }
             var how = GameObject.Find("HowToPanel");
             if (how != null) how.SetActive(false);
-            var rt = new RenderTexture(1280, 720, 24);
+            var rt = new RenderTexture(600, 480, 24);
             cam.targetTexture = rt;
+            cam.aspect = 600f / 480f;
+            cam.GetComponent<CameraFit>().Fit();
             cam.Render();
             RenderTexture.active = rt;
-            var tex = new Texture2D(1280, 720, TextureFormat.RGB24, false);
-            tex.ReadPixels(new Rect(0, 0, 1280, 720), 0, 0);
+            var tex = new Texture2D(600, 480, TextureFormat.RGB24, false);
+            tex.ReadPixels(new Rect(0, 0, 600, 480), 0, 0);
             File.WriteAllBytes("Tools/preview/" + name + ".png", tex.EncodeToPNG());
             RenderTexture.active = null;
             cam.targetTexture = null;

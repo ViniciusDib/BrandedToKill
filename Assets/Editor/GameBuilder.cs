@@ -39,6 +39,7 @@ public static class GameBuilder
         PlayerSettings.defaultWebScreenHeight = 480;
         PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
         PlayerSettings.WebGL.decompressionFallback = true; // necessário para funcionar no itch.io
+        PlayerSettings.WebGL.template = "APPLICATION:Minimal"; // só o jogo, sem o rodapé do Unity (fica exatamente 600x480)
         AssetDatabase.Refresh();
 
         BuildPrefabs();
@@ -519,6 +520,9 @@ public static class GameBuilder
     [MenuItem("Branded to Kill/Build WebGL")]
     public static void BuildWebGL()
     {
+        PlayerSettings.WebGL.template = "APPLICATION:Minimal";
+        PlayerSettings.defaultWebScreenWidth = 600;
+        PlayerSettings.defaultWebScreenHeight = 480;
         var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
         {
             scenes = new[] { Scenes + "MainMenu.unity", Scenes + "Game.unity", Scenes + "FaseSecreta.unity", Scenes + "EndGame.unity" },
